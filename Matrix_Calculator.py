@@ -14,6 +14,7 @@ class Matrix_Calculator:
             for col in row:
                 print(col, end = ' ')
             print('')
+        print('')
 
     # Multiply matrix by a number and view the result
     def multiply_by_number(self, number, initial_matrix):
@@ -63,3 +64,18 @@ class Matrix_Calculator:
         self.view_matrix()
         return self.matrix
 
+    def transposition(self, initial_matrix):
+
+        row = len(initial_matrix)
+        col = len(initial_matrix[0])
+        temp_array = []
+        temp_row = []
+        for i in range(0,col):
+            for j in range(0, row):
+                temp_row.append(initial_matrix[j][i])
+            temp_array.append(temp_row)
+            temp_row = []
+
+        self.matrix = np.array(temp_array)
+        self.view_matrix()
+        return self.matrix
