@@ -4,8 +4,6 @@ import numpy as np
 class Matrix_Calculator:
 
     # Initial Data
-    rows = 3
-    columns = 3
     matrix = np.array([[1, 0, 0],
                        [0, 1, 0],
                        [0, 0, 1]])
@@ -29,3 +27,39 @@ class Matrix_Calculator:
 
         self.matrix = np.array(temp_array)
         self.view_matrix()
+        return self.matrix
+
+    # Check if matrix1 and matrix2 have the same amount of rows and columns
+    def check_equality(self, matrix1, matrix2):
+        is_good = True
+        if len(matrix1) != len(matrix2):
+            is_good = False
+
+        for row1 in matrix1:
+            for row2 in matrix2:
+                if len(row1) != len(row2):
+                    is_good = False
+
+        return is_good
+
+    def sum_sub_matrix(self, matrix1, matrix2, sum):
+        if not self.check_equality(matrix1, matrix2):
+            print("Error! Matrices must have the same amount of rows and columns.")
+
+        row = len(matrix1)
+        col = len(matrix1[0])
+        temp_array = []
+        temp_row = []
+        for i in range(0,row):
+            for j in range(0, col):
+                if sum:
+                    temp_row.append(matrix1[i][j] + matrix2[i][j])
+                else:
+                    temp_row.append(matrix1[i][j] - matrix2[i][j])
+            temp_array.append(temp_row)
+            temp_row = []
+
+        self.matrix = np.array(temp_array)
+        self.view_matrix()
+        return self.matrix
+
