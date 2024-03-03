@@ -27,7 +27,6 @@ class Matrix_Calculator:
             temp_row = []
 
         self.matrix = np.array(temp_array)
-        self.view_matrix()
         return self.matrix
 
     # Check if matrix1 and matrix2 have the same amount of rows and columns
@@ -46,6 +45,7 @@ class Matrix_Calculator:
     def sum_sub_matrix(self, matrix1, matrix2, sum):
         if not self.check_equality(matrix1, matrix2):
             print("Error! Matrices must have the same amount of rows and columns.")
+            return "Error"
 
         row = len(matrix1)
         col = len(matrix1[0])
@@ -61,7 +61,6 @@ class Matrix_Calculator:
             temp_row = []
 
         self.matrix = np.array(temp_array)
-        self.view_matrix()
         return self.matrix
 
     def transposition(self, initial_matrix):
@@ -77,5 +76,4 @@ class Matrix_Calculator:
             temp_row = []
 
         self.matrix = np.array(temp_array)
-        self.view_matrix()
         return self.matrix
